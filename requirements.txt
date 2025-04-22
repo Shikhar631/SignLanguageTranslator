@@ -1,0 +1,10 @@
+Flask==3.1.0
+SpeechRecognition==3.14.1
+pyaudio==0.2.14
+opencv-python
+mediapipe
+numpy
+google-generativeai
+nltk
+deep_translator
+flask[async]
