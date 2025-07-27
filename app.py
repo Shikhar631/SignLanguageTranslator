@@ -88,7 +88,6 @@ class Trie:
 trie = Trie()
 for w in word_list:
     trie.insert(w)
-###########################################################3
 
 # Function to translate text into sign language images
 def get_sign_language_images(text, language):
