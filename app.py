@@ -10,7 +10,6 @@ from googletrans import Translator
 from gtts import gTTS
 import uuid
 import asyncio
-from googletrans import Translator
 from deep_translator import GoogleTranslator  # Use sync translator to avoid async issues
 
 
@@ -240,7 +239,7 @@ def P_text():
 
 #route for sentence using gen-ai
 @app.route('/predict', methods=['POST'])
-async def predict():  # Change to async function
+def predict():  # Change to async function
     try:
         data = request.json
         recognized_words = data.get("words", [])
@@ -263,7 +262,7 @@ async def predict():  # Change to async function
 
         # Use sync translator to avoid async issues
         translator = Translator()
-        translated = await translator.translate(sentence, src='en', dest=lang_code)
+        translated = translator.translate(sentence, src='en', dest=lang_code)
         translated_text = translated.text
         print(f"Translated Sentence: {translated_text}")
 
@@ -324,6 +323,5 @@ def get_audio(filename):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
